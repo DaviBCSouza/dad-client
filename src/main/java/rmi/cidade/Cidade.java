@@ -5,13 +5,15 @@ import java.io.Serializable;
 public class Cidade implements Serializable {
     private String ibge;
     private String nome;
+    private int populacao;
 
     public Cidade() {
     }
 
-    public Cidade(String ibge, String nome) {
+    public Cidade(String ibge, String nome, int populacao) {
         this.ibge = ibge;
         this.nome = nome;
+        this.populacao = populacao;
     }
 
     public String getIbge() {
@@ -30,8 +32,16 @@ public class Cidade implements Serializable {
         this.nome = nome;
     }
 
+    public int getPopulacao() {
+        return this.populacao;
+    }
+
+    public void setPopulacao(int populacao) {
+        this.populacao = populacao;
+    }
+
     public String toString() {
-        return "Cidade{ibge='" + this.ibge + "',nome='" + this.nome + "'}";
+        return "rmi.cidade.Cidade{ibge='" + this.ibge + "', nome='" + this.nome + "', populacao=" + this.populacao
+                + "}";
     }
 }
-

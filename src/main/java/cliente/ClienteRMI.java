@@ -1,5 +1,8 @@
 package cliente;
 
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -10,15 +13,11 @@ import rmi.ocupacao.ICboService;
 import rmi.ubs.IUnidadeSaudeService;
 import rmi.ubs.UnidadeSaude;
 
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.util.List;
-
 public class ClienteRMI {
     public static void main(String[] args) {
-        String host = "localhost";
-        String hostCity = "localhost";
-        String hostOcupation = "localhost";
+        String host = "10.100.32.40";
+        String hostCity = "10.100.33.28";
+        String hostOcupation = "10.100.32.40";
         int port = 2000;
         String urlCidade = "rmi://" + hostCity + ":" + port + "/cidades";
         String urlOcupacao = "rmi://" + hostOcupation + ":" + port + "/ocupacoes";
@@ -68,7 +67,8 @@ public class ClienteRMI {
                         // Escolher cidade
                         System.out.println("\nCidades disponíveis:");
                         for (int i = 0; i < cidades.size(); i++) {
-                            System.out.println(i + " - " + cidades.get(i).getNome());
+                            System.out.println(
+                                    i + " - " + cidades.get(i).getNome() + " - " + cidades.get(i).getPopulacao());
                         }
                         System.out.print("Escolha uma cidade (índice): ");
                         int cidadeIndex = Integer.parseInt(scanner.nextLine());
@@ -92,7 +92,8 @@ public class ClienteRMI {
                         int ubsIndex = Integer.parseInt(scanner.nextLine());
                         UnidadeSaude ubsSelecionada = unidadesSaude.get(ubsIndex);
 
-                        boolean saved = pessoaService.save(name, email, phone, cidadeSelecionada, ocupacaoSelecionada, ubsSelecionada);
+                        boolean saved = pessoaService.save(name, email, phone, cidadeSelecionada, ocupacaoSelecionada,
+                                ubsSelecionada);
                         System.out.println(saved ? "Pessoa cadastrada com sucesso!" : "Erro ao cadastrar pessoa.");
                         break;
 
@@ -132,14 +133,14 @@ public class ClienteRMI {
 }
 
 // PARA CONSULTAR MAIS TARDE
-//            System.out.println("---- CIDADES ----");
-//            List<Cidade> cidades = cidade.getCidades();
-//            cidades.forEach(System.out::println);
+// System.out.println("---- CIDADES ----");
+// List<Cidade> cidades = cidade.getCidades();
+// cidades.forEach(System.out::println);
 //
-//            System.out.println("---- OCUPAÇÕES ----");
-//            List<Ocupacao> ocupacoes = ocupacao.getListOcupacao();
-//            ocupacoes.forEach(System.out::println);
+// System.out.println("---- OCUPAÇÕES ----");
+// List<Ocupacao> ocupacoes = ocupacao.getListOcupacao();
+// ocupacoes.forEach(System.out::println);
 //
-//            System.out.println("---- UBS ----");
-//            List<UnidadeSaude> unidades = ubs.getAll();
-//            unidades.forEach(System.out::println);
+// System.out.println("---- UBS ----");
+// List<UnidadeSaude> unidades = ubs.getAll();
+// unidades.forEach(System.out::println);

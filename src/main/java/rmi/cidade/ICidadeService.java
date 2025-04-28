@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public interface ICidadeService extends Remote {
-    List<Cidade> getCidades() throws RemoteException;
-    Cidade getCidade(String cidade) throws RemoteException;
-}
+    Cidade getCidade(String var1) throws RemoteException;
 
+    List<Cidade> getCidades() throws RemoteException;
+}

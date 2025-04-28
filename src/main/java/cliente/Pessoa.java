@@ -1,10 +1,10 @@
 package cliente;
 
+import java.io.Serializable;
+
 import rmi.cidade.Cidade;
 import rmi.ocupacao.Cbo;
 import rmi.ubs.UnidadeSaude;
-
-import java.io.Serializable;
 
 public class Pessoa implements Serializable {
     private String name;
@@ -80,9 +80,9 @@ public class Pessoa implements Serializable {
                 "\nNome       : " + name +
                 "\nEmail      : " + email +
                 "\nTelefone   : " + phone +
-                "\nCidade     : " + (city != null ? city.getNome() : "N/A") +
+                "\nCidade     : " + (city != null ? city.getNome() + " - " + city.getPopulacao() : "N/A") +
                 "\nOcupação   : " + (ocupation != null ? ocupation.getProfissao() : "N/A") +
-                "\nUBS        : " + (ubs != null ? ubs.getName() : "N/A") +
+                "\nUBS        : " + (ubs != null ? ubs.getName() + " - " + ubs.getBairro() : "N/A") +
                 "\n-----------------------------";
     }
 

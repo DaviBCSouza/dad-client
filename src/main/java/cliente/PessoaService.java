@@ -1,12 +1,12 @@
 package cliente;
 
-import rmi.cidade.Cidade;
-import rmi.ocupacao.Cbo;
-import rmi.ubs.UnidadeSaude;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import rmi.cidade.Cidade;
+import rmi.ocupacao.Cbo;
+import rmi.ubs.UnidadeSaude;
 
 public class PessoaService {
     private final List<Pessoa> pessoas = new ArrayList<>();
@@ -26,14 +26,10 @@ public class PessoaService {
 
         Pessoa novaPessoa = new Pessoa(name.trim(), email.trim(), phone.trim(), city, ocupation, ubs);
         pessoas.add(novaPessoa);
-        return false;
+        return true;
     }
 
     public List<Pessoa> getAll() {
         return new ArrayList<>(pessoas); // retorna uma cópia defensiva
-    }
-
-    public int count() {
-        return pessoas.size();
     }
 }
